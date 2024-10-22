@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fast Tab Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f5f7fa;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #status {
+            margin-top: 1rem;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fast Tab Creator</h1>
+        <button onclick="createTabs()">Create 100 Tabs</button>
+        <button onclick="closeAllTabs()" style="background: #d63031; margin-left: 10px;">Close All</button>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        let tabReferences = [];
+        
+        function createTabs() {
+            const count = 100;
+            tabReferences = [];
+            
+            for (let i = 0; i < count; i++) {
+                const tab = window.open('', '_blank');
+                if (tab) {
+                    tab.document.write(`<title>Tab ${i + 1}</title><body style="margin:0;display:flex;justify-content:center;align-items:center;height:100vh;background:#f5f7fa"><h1>Tab ${i + 1}</h1></body>`);
+                    tab.document.close();
+                    tabReferences.push(tab);
+                }
+            }
+            document.getElementById('status').textContent = `Created ${count} tabs!`;
+        }
+
+        function closeAllTabs() {
+            let closed = 0;
+            tabReferences.forEach(tab => {
+                try {
+                    if (!tab.closed) {
+                        tab.close();
+                        closed++;
+                    }
+                } catch (e) {}
+            });
+            tabReferences = [];
+            document.getElementById('status').textContent = `Closed ${closed} tabs!`;
+        }
+    </script>
+</body>
+</html>

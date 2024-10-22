@@ -21,15 +21,13 @@ This application creates multiple browser tabs simultaneously, which:
 
 ## 🔧 Installation
 
-1. Download the `tab-creator.html` file
-2. No additional dependencies or installation required
+1. Open the website
 
 ## 📝 Usage
 
-1. Open `tab-creator.html` in your web browser
-2. Allow pop-ups if prompted by your browser
-3. Click "Create 100 Tabs" to generate tabs
-4. Use "Close All" to close all created tabs
+1. Allow pop-ups if prompted by your browser
+2. Click "Create 100 Tabs" to generate tabs
+3. Use "Close All" to close all created tabs
 
 ## 🛠️ Browser Compatibility
 
